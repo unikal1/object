@@ -1,26 +1,5 @@
 package domain;
 
-/**
- * packageName : <span style="color: orange;">domain</span> <br>
- * name : <span style="color: orange;">TicketSeller</span> <br>
- * <p>
- * <span style="color: white;">[description]</span>
- * </p>
- * see Also: <br>
- *
- * <pre>
- * code usage:
- * {@code
- *
- * }
- * modified log:
- * ==========================================================
- * DATE          Author           Note
- * ----------------------------------------------------------
- * 8/8/24        isanghyeog         first create
- *
- * </pre>
- */
 public class TicketSeller {
     private TicketOffice ticketOffice;
 
@@ -28,7 +7,12 @@ public class TicketSeller {
         this.ticketOffice = ticketOffice;
     }
 
-    public TicketOffice getTicketOffice() {
-        return ticketOffice;
+    public void sellTicket(Audience audience) {
+        Ticket newTicket  = ticketOffice.getTicket();
+        Long fee = audience.buyTicket(newTicket);
+
+        ticketOffice.minusAmount(fee);
     }
+
+
 }

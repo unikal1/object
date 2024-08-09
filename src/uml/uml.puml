@@ -1,8 +1,8 @@
 @startuml
-left to right direction
-
+Left to Right Direction
 class Audience {
-+ getBag()
++ buyTicket(ticket)
++ giveTicket()
 }
 
 class Bag {
@@ -12,6 +12,7 @@ class Bag {
 + setTicket(ticket)
 + minusAmount(amount)
 + plusAmount(amount)
++ getTicket()
 }
 
 class Invitation {
@@ -24,7 +25,7 @@ class Ticket {
 }
 
 class TicketSeller {
-+ getTicketOffice()
++ sellTicket(audience)
 }
 
 class TicketOffice {
@@ -34,9 +35,20 @@ class TicketOffice {
 + plusAmount(amount)
 }
 
+class Theater {
++ enter(audience)
+}
+
 Audience --> Bag : bag
+
+
 Bag --> Invitation : invitation
 Bag --> Ticket : ticket
+
+
+TicketSeller ..> Audience
+Theater ..> Audience
+
 
 TicketSeller --> TicketOffice : ticketOffice
 TicketOffice --> Ticket : tickets
