@@ -1,0 +1,45 @@
+@startuml
+left to right direction
+
+class Audience {
++ getBag()
+}
+
+class Bag {
+- amount
++ hasInvitation()
++ hasTicket()
++ setTicket(ticket)
++ minusAmount(amount)
++ plusAmount(amount)
+}
+
+class Invitation {
+- when
+}
+
+class Ticket {
+- fee
++ getFee()
+}
+
+class TicketSeller {
++ getTicketOffice()
+}
+
+class TicketOffice {
+- amount
++ getTicket()
++ minusAmount(amount)
++ plusAmount(amount)
+}
+
+Audience --> Bag : bag
+Bag --> Invitation : invitation
+Bag --> Ticket : ticket
+
+TicketSeller --> TicketOffice : ticketOffice
+TicketOffice --> Ticket : tickets
+
+
+@enduml
